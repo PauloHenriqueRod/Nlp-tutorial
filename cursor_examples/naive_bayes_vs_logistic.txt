@@ -1,0 +1,88 @@
+COMPARAÇÃO: NAIVE BAYES vs REGRESSÃO LOGÍSTICA
+===========================================
+
+1. COMO CALCULAM PROBABILIDADES
+-----------------------------
+NAIVE BAYES:
+- Usa o Teorema de Bayes
+- Calcula P(classe|features) usando:
+  * P(features|classe) - probabilidade das features dado a classe
+  * P(classe) - probabilidade a priori da classe
+  * P(features) - probabilidade das features
+- Exemplo para classificação de spam:
+  P(spam|palavras) = P(palavras|spam) * P(spam) / P(palavras)
+
+REGRESSÃO LOGÍSTICA:
+- Usa função sigmoide
+- Calcula P(classe|features) usando:
+  * Combinação linear das features
+  * Transformação sigmoide
+- Exemplo para classificação de spam:
+  P(spam|palavras) = sigmoide(w1*palavra1 + w2*palavra2 + ... + b)
+
+2. TIPO DE MODELO
+---------------
+NAIVE BAYES:
+- Modelo generativo
+- Aprende como os dados são gerados
+- Modela P(features|classe)
+- Exemplo: aprende como emails de spam são escritos
+
+REGRESSÃO LOGÍSTICA:
+- Modelo discriminativo
+- Aprende a fronteira entre classes
+- Modela P(classe|features) diretamente
+- Exemplo: aprende a diferença entre spam e não-spam
+
+3. SUPOSIÇÕES
+-----------
+NAIVE BAYES:
+- Assume independência entre features
+- Exemplo: assume que palavras em um email são independentes
+- P(palavra1, palavra2|spam) = P(palavra1|spam) * P(palavra2|spam)
+
+REGRESSÃO LOGÍSTICA:
+- Assume relação linear entre features e log-odds
+- Não assume independência
+- Pode capturar interações entre features
+
+4. EXEMPLO PRÁTICO
+----------------
+Classificando um email com as palavras "ganhe" e "dinheiro":
+
+NAIVE BAYES:
+P(spam|"ganhe","dinheiro") = 
+    P("ganhe"|spam) * P("dinheiro"|spam) * P(spam) / 
+    P("ganhe","dinheiro")
+
+REGRESSÃO LOGÍSTICA:
+P(spam|"ganhe","dinheiro") = 
+    sigmoide(w1*"ganhe" + w2*"dinheiro" + b)
+
+5. VANTAGENS DE CADA UM
+---------------------
+NAIVE BAYES:
+- Mais rápido para treinar
+- Funciona bem com poucos dados
+- Menos sensível a overfitting
+- Bom para features independentes
+
+REGRESSÃO LOGÍSTICA:
+- Mais flexível
+- Pode capturar interações
+- Melhor com mais dados
+- Coeficientes interpretáveis
+
+6. QUANDO USAR CADA UM
+--------------------
+NAIVE BAYES:
+- Poucos dados de treinamento
+- Features relativamente independentes
+- Necessidade de treinamento rápido
+- Classificação simples
+
+REGRESSÃO LOGÍSTICA:
+- Mais dados disponíveis
+- Features podem ter interações
+- Necessidade de interpretabilidade
+- Classificação mais complexa 

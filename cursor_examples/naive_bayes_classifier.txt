@@ -1,0 +1,130 @@
+CONCEITOS DO NAIVE BAYES CLASSIFIER
+================================
+
+1. O QUE É NAIVE BAYES?
+----------------------
+O Naive Bayes é um algoritmo de classificação probabilística baseado no Teorema de Bayes.
+É chamado de "Naive" (ingênuo) porque assume que todas as características (features) são
+independentes entre si, o que raramente é verdade na prática, mas ainda assim funciona bem
+em muitos casos, especialmente para classificação de texto.
+
+2. TEOREMA DE BAYES
+------------------
+P(A|B) = P(B|A) * P(A) / P(B)
+
+Onde:
+- P(A|B): probabilidade de A dado que B ocorreu
+- P(B|A): probabilidade de B dado que A ocorreu
+- P(A): probabilidade de A
+- P(B): probabilidade de B
+
+3. TIPOS DE NAIVE BAYES
+----------------------
+a) Multinomial Naive Bayes:
+   - Mais comum para classificação de texto
+   - Usa contagem de palavras
+   - Bom para documentos com múltiplas palavras
+
+b) Bernoulli Naive Bayes:
+   - Usa presença/ausência de palavras
+   - Booleano (0 ou 1)
+   - Bom para documentos curtos
+
+c) Gaussian Naive Bayes:
+   - Usa distribuição normal
+   - Para características contínuas
+   - Menos comum em NLP
+
+4. APLICAÇÕES EM NLP
+------------------
+- Classificação de spam
+- Análise de sentimentos
+- Categorização de documentos
+- Detecção de idioma
+- Classificação de tópicos
+- Filtragem de conteúdo
+
+5. VANTAGENS
+-----------
+- Fácil de implementar
+- Rápido para treinar e prever
+- Funciona bem com poucos dados
+- Lida bem com muitas características
+- Não precisa de muito poder computacional
+- Bom para problemas de classificação binária
+
+6. LIMITAÇÕES
+------------
+- Assume independência entre features
+- Pode ter problemas com dados ausentes
+- Sensível a dados de treinamento
+- Pode ter problemas com palavras raras
+- Requer suavização (smoothing) para evitar probabilidade zero
+
+7. PROCESSO DE CLASSIFICAÇÃO
+--------------------------
+1. Pré-processamento do texto:
+   - Tokenização
+   - Remoção de stopwords
+   - Stemming/Lemmatization
+   - Vetorização (Bag of Words/TF-IDF)
+
+2. Treinamento:
+   - Calcula probabilidades a priori
+   - Calcula probabilidades condicionais
+   - Aplica suavização (Laplace)
+
+3. Classificação:
+   - Calcula probabilidade para cada classe
+   - Seleciona classe com maior probabilidade
+
+8. EXEMPLO PRÁTICO
+----------------
+Classificação de spam:
+- Features: palavras no email
+- Classes: spam/não-spam
+- Probabilidade: P(spam|palavras) vs P(não-spam|palavras)
+
+9. CONSIDERAÇÕES IMPORTANTES
+--------------------------
+- Necessidade de pré-processamento adequado
+- Importância da suavização
+- Escolha do tipo de Naive Bayes
+- Qualidade dos dados de treinamento
+- Balanceamento das classes
+
+10. BIBLIOTECAS COMUNS
+--------------------
+- scikit-learn (MultinomialNB, BernoulliNB, GaussianNB)
+- NLTK
+- spaCy
+- TextBlob
+
+11. CÓDIGO DE EXEMPLO
+-------------------
+```python
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.model_selection import train_test_split
+
+# Vetorização
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(textos)
+
+# Treinamento
+modelo = MultinomialNB()
+modelo.fit(X_train, y_train)
+
+# Predição
+predicoes = modelo.predict(X_test)
+```
+
+12. MÉTRICAS DE AVALIAÇÃO
+-----------------------
+- Acurácia
+- Precisão
+- Recall
+- F1-score
+- Matriz de confusão
+- ROC curve
+- AUC score 

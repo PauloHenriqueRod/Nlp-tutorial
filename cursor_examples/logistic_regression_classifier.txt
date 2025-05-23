@@ -1,0 +1,138 @@
+CONCEITOS DE REGRESSÃO LOGÍSTICA PARA CLASSIFICAÇÃO
+===============================================
+
+1. O QUE É REGRESSÃO LOGÍSTICA?
+-----------------------------
+A Regressão Logística é um algoritmo de classificação que usa uma função sigmoide para
+transformar saídas lineares em probabilidades entre 0 e 1. Embora tenha "regressão" no nome,
+é principalmente usado para classificação binária e multiclasse.
+
+2. FUNÇÃO SIGMOIDE
+----------------
+f(x) = 1 / (1 + e^(-x))
+
+Onde:
+- x é a combinação linear das features
+- e é o número de Euler
+- A saída está sempre entre 0 e 1
+- 0.5 é o limiar de decisão
+
+3. CARACTERÍSTICAS PRINCIPAIS
+---------------------------
+- Modelo linear com saída não-linear
+- Produz probabilidades
+- Pode ser usado para classificação binária e multiclasse
+- Interpretável (coeficientes mostram importância das features)
+- Pode ser regularizado (L1, L2, Elastic Net)
+
+4. APLICAÇÕES EM NLP
+------------------
+- Análise de sentimentos
+- Classificação de documentos
+- Detecção de spam
+- Categorização de textos
+- Classificação de tópicos
+- Identificação de idioma
+
+5. VANTAGENS
+-----------
+- Fácil de implementar e interpretar
+- Rápido para treinar e prever
+- Produz probabilidades
+- Pode lidar com features não-lineares
+- Funciona bem com muitas features
+- Menos propenso a overfitting que Naive Bayes
+
+6. LIMITAÇÕES
+------------
+- Assume relação linear entre features e log-odds
+- Pode ter problemas com features correlacionadas
+- Requer mais dados que Naive Bayes
+- Sensível a outliers
+- Pode precisar de feature engineering
+
+7. PROCESSO DE CLASSIFICAÇÃO
+--------------------------
+1. Pré-processamento:
+   - Tokenização
+   - Remoção de stopwords
+   - Stemming/Lemmatization
+   - Vetorização (TF-IDF, Word Embeddings)
+
+2. Treinamento:
+   - Otimização dos coeficientes
+   - Aplicação de regularização
+   - Validação cruzada
+
+3. Classificação:
+   - Cálculo do score linear
+   - Aplicação da função sigmoide
+   - Decisão baseada no limiar
+
+8. REGULARIZAÇÃO
+--------------
+a) L1 (Lasso):
+   - Penaliza coeficientes absolutos
+   - Promove esparsidade
+   - Seleção de features
+
+b) L2 (Ridge):
+   - Penaliza quadrado dos coeficientes
+   - Reduz overfitting
+   - Mantém todas as features
+
+c) Elastic Net:
+   - Combinação de L1 e L2
+   - Mais flexível
+   - Melhor para features correlacionadas
+
+9. MÉTRICAS DE AVALIAÇÃO
+---------------------
+- Acurácia
+- Precisão
+- Recall
+- F1-score
+- ROC curve
+- AUC score
+- Matriz de confusão
+
+10. BIBLIOTECAS COMUNS
+--------------------
+- scikit-learn (LogisticRegression)
+- statsmodels
+- PyTorch
+- TensorFlow
+
+11. CÓDIGO DE EXEMPLO
+-------------------
+```python
+from sklearn.linear_model import LogisticRegression
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.model_selection import train_test_split
+
+# Vetorização
+vectorizer = TfidfVectorizer()
+X = vectorizer.fit_transform(textos)
+
+# Treinamento
+modelo = LogisticRegression(C=1.0, penalty='l2')
+modelo.fit(X_train, y_train)
+
+# Predição
+predicoes = modelo.predict(X_test)
+probabilidades = modelo.predict_proba(X_test)
+```
+
+12. DIFERENÇAS PARA NAIVE BAYES
+----------------------------
+- Regressão Logística:
+  * Modelo discriminativo
+  * Aprende fronteiras de decisão
+  * Melhor com mais dados
+  * Pode capturar interações entre features
+
+- Naive Bayes:
+  * Modelo generativo
+  * Aprende distribuições de probabilidade
+  * Melhor com menos dados
+  * Assume independência entre features 

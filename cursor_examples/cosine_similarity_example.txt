@@ -1,0 +1,73 @@
+CONCEITOS DE SIMILARIDADE DO COSSENO (COSINE SIMILARITY)
+=====================================================
+
+1. O QUE É SIMILARIDADE DO COSSENO?
+----------------------------------
+A similaridade do cosseno é uma medida que calcula o cosseno do ângulo entre dois vetores. 
+Ela varia de -1 a 1, onde:
+- 1: vetores idênticos (mesma direção)
+- 0: vetores ortogonais (perpendiculares)
+- -1: vetores opostos
+
+2. FÓRMULA MATEMÁTICA
+--------------------
+cos(θ) = (A · B) / (||A|| ||B||)
+Onde:
+- A · B: produto escalar dos vetores
+- ||A|| e ||B||: normas (magnitudes) dos vetores
+
+3. EXEMPLOS NO CÓDIGO
+--------------------
+a) Vetores Simples (Exemplo 1):
+   - v1 = [1, 0, 0]: vetor apontando para x
+   - v2 = [0, 1, 0]: vetor apontando para y
+   - v3 = [1, 1, 0]: vetor apontando para x+y
+   
+   Resultados esperados:
+   - v1 e v2: similaridade = 0 (perpendiculares)
+   - v1 e v3: similaridade ≈ 0.707 (45 graus)
+   - v2 e v3: similaridade ≈ 0.707 (45 graus)
+
+b) Vetores de Palavras (Exemplo 2):
+   - gato = [0.8, 0.2, 0.1]: [animal, doméstico, felino]
+   - cachorro = [0.7, 0.3, 0.0]: [animal, doméstico, canino]
+   - carro = [0.1, 0.0, 0.9]: [veículo, motor, transporte]
+   
+   Resultados esperados:
+   - gato e cachorro: similaridade alta (conceitos similares)
+   - gato e carro: similaridade baixa (conceitos diferentes)
+
+4. IMPLEMENTAÇÃO
+---------------
+O código demonstra três formas de calcular a similaridade:
+1. Usando scikit-learn (cosine_similarity)
+2. Cálculo manual (função manual_cosine_similarity)
+3. Comparação entre os dois métodos
+
+5. APLICAÇÕES EM NLP
+------------------
+- Comparação de documentos
+- Busca semântica
+- Agrupamento de textos
+- Recomendação de conteúdo
+- Detecção de plágio
+
+6. VANTAGENS
+-----------
+- Invariante à escala (não importa o tamanho dos vetores)
+- Captura a direção/semântica dos vetores
+- Eficiente de calcular
+- Resultados normalizados entre -1 e 1
+- Intuitivo geometricamente
+
+7. LIMITAÇÕES
+------------
+- Não considera a ordem das palavras
+- Pode ser sensível a ruído nos dados
+- Requer vetores de mesma dimensão
+- Pode não capturar relações complexas entre palavras
+
+8. BIBLIOTECAS UTILIZADAS
+------------------------
+- numpy: para operações com vetores
+- scikit-learn: para função cosine_similarity 

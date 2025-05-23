@@ -1,0 +1,91 @@
+CONCEITOS DE SENTENCE EMBEDDINGS
+==============================
+
+1. O QUE SÃO SENTENCE EMBEDDINGS?
+--------------------------------
+Sentence embeddings são representações numéricas (vetores) de sentenças inteiras que 
+capturam seu significado semântico. Cada sentença é convertida em um único vetor de 
+dimensão fixa (ex: 768 números), onde sentenças com significados similares terão 
+vetores similares.
+
+2. COMO FUNCIONAM
+----------------
+- Transformam texto em vetores numéricos
+- Capturam o significado semântico da sentença inteira
+- Preservam relações semânticas entre sentenças
+- Permitem comparações matemáticas entre textos
+
+3. EXEMPLO NO CÓDIGO
+-------------------
+O código demonstra:
+a) Carregamento do modelo:
+   - Usa SentenceTransformer com modelo 'all-MiniLM-L6-v2'
+   - Modelo pré-treinado que entende português
+
+b) Exemplo de sentenças:
+   - "O gato está sentado no tapete"
+   - "Um felino está sobre o carpete"
+   - "O cachorro está brincando no parque"
+   - "O computador está processando dados"
+   - "O laptop está executando programas"
+
+c) Processos realizados:
+   1. Geração de embeddings para cada sentença
+   2. Cálculo de similaridades entre todas as sentenças
+   3. Busca semântica usando uma query
+
+4. APLICAÇÕES PRÁTICAS
+---------------------
+- Busca semântica de documentos
+- Agrupamento de textos similares
+- Recomendação de conteúdo
+- Análise de sentimentos
+- Resumo automático
+- Chatbots e sistemas de diálogo
+- Detecção de plágio
+
+5. VANTAGENS
+-----------
+- Capturam o significado semântico completo
+- Entendem sinônimos e diferentes formas de expressão
+- Permitem comparações matemáticas entre textos
+- Funcionam bem com diferentes idiomas
+- Podem ser usados para várias tarefas de NLP
+
+6. MODELOS COMUNS
+----------------
+- BERT
+- Sentence-BERT
+- Universal Sentence Encoder
+- RoBERTa
+- DistilBERT
+
+7. BIBLIOTECAS UTILIZADAS
+------------------------
+- sentence-transformers: para geração dos embeddings
+- numpy: para operações com vetores
+- scikit-learn: para cálculo de similaridade
+
+8. CONSIDERAÇÕES IMPORTANTES
+---------------------------
+- Requer modelo pré-treinado
+- Pode ser computacionalmente intensivo
+- Necessita de dados de treinamento adequados
+- Performance varia com o idioma
+- Depende da qualidade do modelo usado
+
+9. DIFERENÇA PARA WORD EMBEDDINGS
+-------------------------------
+- Word embeddings: representam palavras individuais
+- Sentence embeddings: representam sentenças inteiras
+- Sentence embeddings capturam contexto e relações
+- Mais poderosos para tarefas que precisam entender significado completo
+
+10. EXEMPLO DE USO NO CÓDIGO
+---------------------------
+O código mostra:
+1. Como carregar um modelo de sentence embeddings
+2. Como gerar embeddings para sentenças
+3. Como calcular similaridades entre sentenças
+4. Como fazer busca semântica
+5. Como ordenar resultados por relevância 
