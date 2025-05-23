@@ -1,0 +1,132 @@
+COMPARAÇÃO: SENTENCE ENCODERS vs CLASSIFICADORES TRADICIONAIS
+========================================================
+
+1. O QUE SÃO?
+-----------
+SENTENCE ENCODERS:
+- Transformam sentenças em vetores densos (embeddings)
+- Capturam significado semântico
+- Usam modelos de linguagem profundos (ex: BERT, RoBERTa)
+- Produzem representações vetoriais reutilizáveis
+
+CLASSIFICADORES (Naive Bayes, Regressão Logística):
+- Aprendem a classificar textos em categorias
+- Focam em features específicas para a tarefa
+- São modelos mais simples e tradicionais
+- Produzem apenas probabilidades de classe
+
+2. COMO FUNCIONAM
+---------------
+SENTENCE ENCODERS:
+- Processam o texto inteiro de uma vez
+- Capturam contexto e relações entre palavras
+- Geram vetores de dimensão fixa (ex: 768 números)
+- Podem ser usados para várias tarefas diferentes
+
+CLASSIFICADORES:
+- Usam features específicas (ex: contagem de palavras)
+- Não capturam contexto entre palavras
+- Produzem apenas probabilidades de classe
+- São treinados para uma tarefa específica
+
+3. EXEMPLO PRÁTICO
+----------------
+Para a sentença "O gato está sentado no tapete":
+
+SENTENCE ENCODER:
+- Gera um vetor como: [0.2, -0.5, 0.8, ..., 0.3]
+- Este vetor captura o significado semântico
+- Pode ser usado para:
+  * Busca semântica
+  * Similaridade entre textos
+  * Várias tarefas de NLP
+
+CLASSIFICADOR:
+- Usa features como: {"gato": 1, "sentado": 1, "tapete": 1}
+- Produz probabilidade: P(positivo) = 0.85
+- Só serve para a tarefa treinada
+
+4. APLICAÇÕES
+-----------
+SENTENCE ENCODERS:
+- Busca semântica
+- Agrupamento de textos
+- Recomendação de conteúdo
+- Resumo automático
+- Chatbots
+- Qualquer tarefa que precise entender significado
+
+CLASSIFICADORES:
+- Classificação de sentimentos
+- Detecção de spam
+- Categorização de documentos
+- Tarefas específicas de classificação
+
+5. VANTAGENS
+-----------
+SENTENCE ENCODERS:
+- Capturam significado semântico
+- Reutilizáveis para várias tarefas
+- Entendem contexto e relações
+- Funcionam bem com diferentes idiomas
+- Podem transferir aprendizado
+
+CLASSIFICADORES:
+- Mais simples de implementar
+- Mais rápidos para treinar
+- Precisam de menos dados
+- Mais interpretáveis
+- Mais eficientes computacionalmente
+
+6. QUANDO USAR CADA UM
+--------------------
+SENTENCE ENCODERS:
+- Quando precisar entender significado
+- Para tarefas que precisam de contexto
+- Quando tiver várias tarefas relacionadas
+- Para busca semântica
+- Quando precisar de transferência de aprendizado
+
+CLASSIFICADORES:
+- Para tarefas simples de classificação
+- Quando tiver poucos dados
+- Quando precisar de velocidade
+- Para tarefas específicas
+- Quando precisar de interpretabilidade
+
+7. EXEMPLO DE CÓDIGO
+------------------
+SENTENCE ENCODER:
+```python
+from sentence_transformers import SentenceTransformer
+
+# Carregar modelo
+model = SentenceTransformer('all-MiniLM-L6-v2')
+
+# Gerar embeddings
+sentences = ["O gato está sentado no tapete", 
+            "Um felino está sobre o carpete"]
+embeddings = model.encode(sentences)
+
+# Calcular similaridade
+similaridade = cosine_similarity(embeddings[0], embeddings[1])
+```
+
+CLASSIFICADOR:
+```python
+from sklearn.naive_bayes import MultinomialNB
+
+# Treinar classificador
+modelo = MultinomialNB()
+modelo.fit(X_train, y_train)
+
+# Fazer predição
+predicao = modelo.predict(["O gato está sentado no tapete"])
+```
+
+8. COMBINAÇÃO
+-----------
+É comum usar Sentence Encoders como features para classificadores:
+1. Gerar embeddings com Sentence Encoder
+2. Usar esses embeddings como input para um classificador
+3. Combinar o poder semântico com a eficiência da classificação 
